@@ -1,25 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANAGRAFICA_1.0</title>
+  <title>Anagrafica1.0</title>
 
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th,
-    td {
-      padding: 8px;
-    }
-  </style>
   <script>
     function stampa() {
       let nome = document.getElementById("nome").value;
@@ -27,44 +12,26 @@
       let indirizzo = document.getElementById("indirizzo").value;
       let citta = document.getElementById("citta").value;
 
-      let sesso = " ";
-      if (document.getElementById("maschio").checked) {
-        sesso = "Maschio";
-      } else if (document.getElementById("femmina").checked) {
-        sesso = "Femmina";
-      } else if (document.getElementById("altro").checked) {
-        sesso = "Altro"; }
-      else {
-        sesso = "Non selezionato";
-      }
+      let tabella = "<table border='1' cellpadding='5'>" +
+        "<tr><th>Nome</th><th>Cognome</th><th>Indirizzo</th><th>Città</th></tr>" +
+        "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + indirizzo + "</td><td>" + citta + "</td></tr>" +
+        "</table>";
 
-      if (sportSelezionati == "") { sportSelezionati = "Nessuno"; }
-      let risultato = "<p>" + nome + ",  " + cognome + ", " + indirizzo + ", " + citta + ", " + provincia + ", " + sportSelezionati + "</p>";
-      document.getElementById("1").innerHTML = risultato;
+      document.getElementById("dest").innerHTML = tabella;
     }
   </script>
 </head>
 
 <body bgcolor="white">
-  <h2>Anagrafica 2.0</h2>
   <input type="text" id="nome" placeholder="Nome"><br>
   <input type="text" id="cognome" placeholder="Cognome"><br>
   <input type="text" id="indirizzo" placeholder="Indirizzo"><br>
   <input type="text" id="citta" placeholder="Città"><br>
 
-  <input name="sesso" type="radio" id="maschio" placeholder="maschio">Maschio<br>
-  <input name="sesso" type="radio" id="femmina" placeholder="femmina">Femmina<br>
-  <input name="sesso" type="radio" id="altro" placeholder="altro">Altro<br>
-
 
   <input type="button" value="Stampa" onclick="stampa()"><br><br>
-  <div id="1"></div>
- 
 
-
-
-
-
+  <div id="dest"></div>
 </body>
 
-</ht
+</html>
