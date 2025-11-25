@@ -1,16 +1,82 @@
+Ecco il tuo codice con **CSS integrato** direttamente nella pagina (puoi anche metterlo in un file esterno se preferisci).
+Ho aggiunto uno stile semplice, moderno e pulito.
+
+---
+
+### ✔️ HTML + CSS integrato
+
+```html
 <!DOCTYPE html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
     <title>Menu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .menu-container {
+            background-color: #333;
+            padding: 15px 0;
+        }
+
+        .menu {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .menu-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .menu-links li a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+    </style>
 </head>
+
 <body>
     <header class="menu-container">
         <nav class="menu">
             <ul class="menu-links">
                 <li><a href="anagrafica1.html">-Anagrafica 1.0</a></li>
-                <li><a href="anagrafica2.html">-Anagrafica </a></li>
+                <li><a href="anagrafica2.html">-Anagrafica</a></li>
                 <li><a href="anagrafica3.0.html">-Anagrafica 3.0</a></li>
             </ul>
         </nav>
     </header>
 </body>
 </html>
+```
+
+---
+
+### Vuoi che il menu diventi:
+
+✅ responsive
+✅ centrato
+✅ fisso in alto (sticky)
+✅ con dropdown
+✅ con icone
+
+…oppure vuoi il CSS in un file `.css` separato?
+
+Dimmi pure!
