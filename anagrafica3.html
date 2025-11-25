@@ -43,6 +43,8 @@ if (document.getElementById("maschio").checked) {
 sesso = "Maschio";
 } else if (document.getElementById("femmina").checked) {
 sesso = "Femmina";
+} else if (document.getElementById("altro").checked) {
+sesso = "Altro";
 } else {
 sesso = "Non selezionato";
 }
@@ -87,6 +89,7 @@ document.getElementById("3").innerHTML = testo;
 
 <input name="sesso" type="radio" id="maschio" placeholder="maschio">Maschio<br>
 <input name="sesso" type="radio" id="femmina" placeholder="femmina">Femmina<br>
+<input name="sesso" type="radio" id="altro" placeholder="altro">Altro<br>
 
 <label>Diplomi posseduti:</label><br>
 <input type="checkbox" name="diploma" value="Licenza Media"> Licenza Media<br>
