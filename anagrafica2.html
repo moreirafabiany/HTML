@@ -31,6 +31,8 @@
           sesso = "Maschio";
         } else if (document.getElementById("femmina").checked) {
           sesso = "Femmina";
+        } else if (document.getElementById("altro").checked) {
+          sesso = "Altro";
         } else {
           sesso = "Non selezionato";
         }
@@ -90,18 +92,9 @@
     <input type="text" id="indirizzo" placeholder="Indirizzo" /><br />
     <input type="text" id="citta" placeholder="Città" /><br />
 
-    <input
-      name="sesso"
-      type="radio"
-      id="maschio"
-      placeholder="maschio"
-    />Maschio<br />
-    <input
-      name="sesso"
-      type="radio"
-      id="femmina"
-      placeholder="femmina"
-    />Femmina<br />
+    <input name="sesso" type="radio" id="maschio" placeholder="maschio"/>Maschio<br />
+    <input name="sesso" type="radio" id="femmina" placeholder="femmina"/>Femmina<br />
+    <input name="sesso" type="radio" id="altro" placeholder="altro"/>Altro<br />
 
     <label>Diplomi posseduti:</label><br />
     <input type="checkbox" name="diploma" value="Licenza Media" /> Licenza
