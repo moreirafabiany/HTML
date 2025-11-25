@@ -32,7 +32,9 @@
         sesso = "Maschio";
       } else if (document.getElementById("femmina").checked) {
         sesso = "Femmina";
-      } else {
+      } else if (document.getElementById("altro").checked) {
+        sesso = "Altro"; }
+      else {
         sesso = "Non selezionato";
       }
 
@@ -52,6 +54,7 @@
 
   <input name="sesso" type="radio" id="maschio" placeholder="maschio">Maschio<br>
   <input name="sesso" type="radio" id="femmina" placeholder="femmina">Femmina<br>
+  <input name="sesso" type="radio" id="altro" placeholder="altro">Altro<br>
 
 
   <input type="button" value="Stampa" onclick="stampa()"><br><br>
