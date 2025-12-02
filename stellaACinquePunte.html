@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head><title>STELLA</title></head>
+<head>
+    <title>STELLA</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0;
+        }
+
+        svg {
+            display: block;
+        }
+    </style>
+</head>
 <body>
 
-<svg width="1280" height="576">
-  <circle cx="640" cy="288" r="280" style="fill:#b0c4de;stroke:#485485;stroke-width:5;fill-rule:evenodd;" />
-  <polygon points="640,8 840,473 389,173 890,173 439,473" style="fill:#9381FF;stroke:#7841A1;stroke-width:5;fill-rule:evenodd;" />
+<svg width="600" height="600">
+  <!-- Cerchio centrato -->
+  <circle cx="300" cy="300" r="260"
+          style="fill:#b0c4de;stroke:#485485;stroke-width:5;" />
+
+  <!-- Stella centrata e contenuta nel cerchio -->
+  <polygon 
+     points="
+        300,40
+        380,340
+        120,180
+        480,180
+        220,340
+     "
+     style="fill:#9381FF;stroke:#7841A1;stroke-width:5;" />
 </svg>
-  
+
 </body>
 </html>
+
+
 
 
 
