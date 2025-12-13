@@ -9,6 +9,10 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.beginPath();
 ctx.arc(250, 250, 250, 0, 2 * Math.PI);
+ctx.fillStyle = "#b0c4de";     // interno cerchio
+ctx.fill();
+ctx.strokeStyle = "#485485";  // bordo cerchio
+ctx.lineWidth = 2;
 ctx.stroke();
 ctx.beginPath();
 ctx.moveTo(250,0);
@@ -17,19 +21,15 @@ ctx.lineTo(13,170);
 ctx.lineTo(487,170);
 ctx.lineTo(85,438);
 ctx.lineTo(250,0);
+ctx.fillStyle = "#9381FF";    // interno stella
+ctx.fill();
+ctx.strokeStyle = "#7841A1";  // bordo stella
+ctx.lineWidth = 2;
 ctx.stroke();
 </script>
 
 </body>
-</html><!DOCTYPE>
-<html> 
-    <head><title>STELLA</title></head> 
-    <body> 
-        <svg width="1280" height="576"> <circle cx="640" cy="288" r="280" style="fill:#b0c4de; stroke:#485485; stroke-width:5;" /> 
-            <polygon points="640,8 840,473 389,173 890,173 439,473" style="fill:#9381FF; stroke:#7841A1; stroke-width:5;" /> 
-        </svg>
-    </body> 
-</html>      
+</html>
 
 
 
