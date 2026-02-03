@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Anagrafica 4.0</title>
+<title>Anagrafica Unica</title>
 
 <style>
 body { font-family: Arial; padding: 20px; }
@@ -23,7 +23,7 @@ let provincia = document.getElementById("provincia").value;
 let nazione = document.getElementById("nazione").value;
 
 if (!nome || !cognome || !eta) {
-alert("Compila almeno nome, cognome ed età.");
+alert("Compila almeno nome, cognome ed età!");
 return;
 }
 
@@ -36,7 +36,7 @@ provincia: provincia,
 nazione: nazione
 };
 
-let elenco = JSON.parse(localStorage.getItem("anagrafica"))[];
+let elenco = JSON.parse(localStorage.getItem("anagrafica")) || [];
 elenco.push(persona);
 localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
@@ -51,7 +51,7 @@ document.getElementById("nazione").value = "";
 }
 
 function aggiornaTabella() {
-let elenco = JSON.parse(localStorage.getItem("anagrafica"))[];
+let elenco = JSON.parse(localStorage.getItem("anagrafica")) || [];
 
 let tab = "<table>";
 tab += "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>";
