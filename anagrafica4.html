@@ -36,7 +36,7 @@ provincia: provincia,
 nazione: nazione
 };
 
-let elenco = JSON.parse(localStorage.getItem("anagrafica")) || [];
+let elenco = JSON.parse(localStorage.getItem("anagrafica"))[];
 elenco.push(persona);
 localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
@@ -51,7 +51,7 @@ document.getElementById("nazione").value = "";
 }
 
 function aggiornaTabella() {
-let elenco = JSON.parse(localStorage.getItem("anagrafica")) || [];
+let elenco = JSON.parse(localStorage.getItem("anagrafica"))[];
 
 let tab = "<table>";
 tab += "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>";
