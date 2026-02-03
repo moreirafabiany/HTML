@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Anagrafica Unica</title>
+<title>Anagrafica 4.0</title>
 
 <style>
 body { font-family: Arial; padding: 20px; }
@@ -15,60 +15,76 @@ th { background-color: #ddd; }
 
 <script>
 function aggiungi() {
-let nome = document.getElementById("nome").value;
-let cognome = document.getElementById("cognome").value;
-let eta = document.getElementById("eta").value;
-let citta = document.getElementById("citta").value;
-let provincia = document.getElementById("provincia").value;
-let nazione = document.getElementById("nazione").value;
+  let nome = document.getElementById("nome").value;
+  let cognome = document.getElementById("cognome").value;
+  let eta = document.getElementById("eta").value;
+  let citta = document.getElementById("citta").value;
+  let provincia = document.getElementById("provincia").value;
+  let nazione = document.getElementById("nazione").value;
 
-if (!nome || !cognome || !eta) {
-alert("Compila almeno nome, cognome ed età!");
-return;
-}
+  if (!nome || !cognome || !eta) {
+    alert("Compila almeno nome, cognome ed età.");
+    return;
+  }
 
-let persona = {
-nome: nome,
-cognome: cognome,
-eta: eta,
-citta: citta,
-provincia: provincia,
-nazione: nazione
-};
+  let persona = {
+    nome: nome,
+    cognome: cognome,
+    eta: eta,
+    citta: citta,
+    provincia: provincia,
+    nazione: nazione
+  };
 
-let elenco = JSON.parse(localStorage.getItem("anagrafica")) [];
-elenco.push(persona);
-localStorage.setItem("anagrafica", JSON.stringify(elenco));
+  // RECUPERO DATI SENZA ||
+  let dati = localStorage.getItem("anagrafica");
+  let elenco;
 
-aggiornaTabella();
+  if (dati === null) {
+    elenco = [];
+  } else {
+    elenco = JSON.parse(dati);
+  }
 
-document.getElementById("nome").value = "";
-document.getElementById("cognome").value = "";
-document.getElementById("eta").value = "";
-document.getElementById("citta").value = "";
-document.getElementById("provincia").value = "";
-document.getElementById("nazione").value = "";
+  elenco.push(persona);
+  localStorage.setItem("anagrafica", JSON.stringify(elenco));
+
+  aggiornaTabella();
+
+  document.getElementById("nome").value = "";
+  document.getElementById("cognome").value = "";
+  document.getElementById("eta").value = "";
+  document.getElementById("citta").value = "";
+  document.getElementById("provincia").value = "";
+  document.getElementById("nazione").value = "";
 }
 
 function aggiornaTabella() {
-let elenco = JSON.parse(localStorage.getItem("anagrafica")) [];
+  let dati = localStorage.getItem("anagrafica");
+  let elenco;
 
-let tab = "<table>";
-tab += "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>";
+  if (dati === null) {
+    elenco = [];
+  } else {
+    elenco = JSON.parse(dati);
+  }
 
-for (let p of elenco) {
-tab += "<tr>" +
-"<td>" + p.nome + "</td>" +
-"<td>" + p.cognome + "</td>" +
-"<td>" + p.eta + "</td>" +
-"<td>" + p.citta + "</td>" +
-"<td>" + p.provincia + "</td>" +
-"<td>" + p.nazione + "</td>" +
-"</tr>";
-}
+  let tab = "<table>";
+  tab += "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>";
 
-tab += "</table>";
-document.getElementById("risultato").innerHTML = tab;
+  for (let p of elenco) {
+    tab += "<tr>" +
+      "<td>" + p.nome + "</td>" +
+      "<td>" + p.cognome + "</td>" +
+      "<td>" + p.eta + "</td>" +
+      "<td>" + p.citta + "</td>" +
+      "<td>" + p.provincia + "</td>" +
+      "<td>" + p.nazione + "</td>" +
+      "</tr>";
+  }
+
+  tab += "</table>";
+  document.getElementById("risultato").innerHTML = tab;
 }
 
 window.onload = aggiornaTabella;
