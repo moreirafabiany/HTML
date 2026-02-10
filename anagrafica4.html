@@ -48,8 +48,6 @@ function aggiungi() {
   elenco.push(persona);
   localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
-  aggiornaTabella();
-
   document.getElementById("nome").value = "";
   document.getElementById("cognome").value = "";
   document.getElementById("eta").value = "";
@@ -58,35 +56,6 @@ function aggiungi() {
   document.getElementById("nazione").value = "";
 }
 
-function aggiornaTabella() {
-  let dati = localStorage.getItem("anagrafica");
-  let elenco;
-
-  if (dati === null) {
-    elenco = [];
-  } else {
-    elenco = JSON.parse(dati);
-  }
-
-  let tab = "<table>";
-  tab += "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>";
-
-  for (let p of elenco) {
-    tab += "<tr>" +
-      "<td>" + p.nome + "</td>" +
-      "<td>" + p.cognome + "</td>" +
-      "<td>" + p.eta + "</td>" +
-      "<td>" + p.citta + "</td>" +
-      "<td>" + p.provincia + "</td>" +
-      "<td>" + p.nazione + "</td>" +
-      "</tr>";
-  }
-
-  tab += "</table>";
-  document.getElementById("risultato").innerHTML = tab;
-}
-
-window.onload = aggiornaTabella;
 </script>
 </head>
 
