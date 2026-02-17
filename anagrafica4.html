@@ -56,11 +56,28 @@ function aggiungi() {
   document.getElementById("nazione").value = "";
 }
 
+function stampa() {
+  let nome = document.getElementById("nome").value;
+  let cognome = document.getElementById("cognome").value;
+  let eta = document.getElementById("eta").value;
+  let citta = document.getElementById("citta").value;
+  let provincia = document.getElementById("provincia").value;
+  let nazione = document.getElementById("nazione").value;
+
+  let tabella = "<table border='1' cellpadding='3'>" +
+        "<tr><th>Nome</th><th>Cognome</th><th>Età</th><th>Città</th><th>Provincia</th><th>Nazione</th></tr>" +
+        "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + eta + "</td><td>" + citta + "</td><td>" + provincia + "</td><td>" + nazione + "</td></tr>" +
+        "</table>";
+
+      document.getElementById("stampa").innerHTML = tabella;
+    }
+
 </script>
 </head>
 
 <body>
-<h2>Anagrafica Completa</h2>
+<button onclick="document.location='https://moreirafabiany.github.io/HTML/?authuser=0'">Go back to menu</button>
+<h2>Anagrafica 4.0</h2>
 
 <input type="text" id="nome" placeholder="Nome"><br>
 <input type="text" id="cognome" placeholder="Cognome"><br>
@@ -70,7 +87,9 @@ function aggiungi() {
 <input type="text" id="nazione" placeholder="Nazione"><br>
 
 <button onclick="aggiungi()">Aggiungi</button>
+<button onclick="stampa()">Stampa</button>
 
 <div id="risultato"></div>
+<div id="stampa"></div>
 </body>
 </html>
