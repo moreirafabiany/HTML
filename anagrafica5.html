@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Anagrafica 4.0</title>
+<title>Anagrafica 5.0</title>
 
 <style>
 body {padding: 20px; }
@@ -14,25 +14,14 @@ th { background-color: #ddd; }
 </style>
 
 <script>
-// Funzione per validare gli input tramite espressioni regolari
 function validaInput(nome, cognome, cap, citta, email, telefono) {
-  // Regex per nome e cognome (solo lettere)
   let nomeRegex = /^[a-zA-Z]+$/;
   let cognomeRegex = /^[a-zA-Z]+$/;
-
-  // Regex per CAP (5 numeri)
   let capRegex = /^\d{5}$/;
-
-  // Regex per città (solo lettere e spazi)
   let cittaRegex = /^[a-zA-Z\s]+$/;
-
-  // Regex per email (formato valido)
   let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-  // Regex per telefono (solo numeri, lunghezza tra 10 e 15)
   let telefonoRegex = /^\d{10,15}$/;
 
-  // Verifica tutti i campi
   if (!nomeRegex.test(nome)) {
     alert("Il nome deve contenere solo lettere.");
     return false;
@@ -61,7 +50,6 @@ function validaInput(nome, cognome, cap, citta, email, telefono) {
   return true;
 }
 
-// Funzione per aggiungere una persona
 function aggiungi() {
   let nome = document.getElementById("nome").value;
   let cognome = document.getElementById("cognome").value;
@@ -114,7 +102,6 @@ function aggiungi() {
   document.getElementById("telefono").value = "";
 }
 
-// Funzione per stampare i dati in una tabella
 function stampa() {
   let nome = document.getElementById("nome").value;
   let cognome = document.getElementById("cognome").value;
@@ -138,7 +125,7 @@ function stampa() {
 <body>
 <button onclick="document.location='https://moreirafabiany.github.io/HTML/?authuser=0'">Go back to menu</button>
 
-<h2>Anagrafica 4.0</h2>
+<h2>Anagrafica 5.0</h2>
 
 <input type="text" id="nome" placeholder="Nome"><br>
 <input type="text" id="cognome" placeholder="Cognome"><br>
