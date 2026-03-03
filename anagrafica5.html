@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Anagrafica 4.0</title>
 
+<style>
+body {padding: 20px; }
+input { margin: 5px 0; padding: 8px; width: 250px; }
+button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
+table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+th, td { border: 1px solid black; padding: 8px; text-align: center; }
+th { background-color: #ddd; }
+</style>
+
+<script>
+// Funzione per validare gli input tramite espressioni regolari
+function validaInput(nome, cognome, cap, citta, email, telefono) {
+  // Regex per nome e cognome (solo lettere)
+  let nomeRegex = /^[a-zA-Z]+$/;
+  let cognomeRegex = /^[a-zA-Z]+$/;
+
+  // Regex per CAP (5 numeri)
+  let capRegex = /^\d{5}$/;
+
+  // Regex per città (solo lettere e spazi)
+  let cittaRegex = /^[a-zA-Z\s]+$/;
+
+  // Regex per email (formato valido)
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Regex per telefono (solo numeri, lunghezza tra 10 e 15)
+  let telefonoRegex = /^\d{10,15}$/;
+
+  // Verifica tutti i campi
+  if (!nomeRegex.test(nome)) {
+    alert("Il nome deve contenere solo lettere.");
+    return false;
+  }
+  if (!cognomeRegex.test(cognome)) {
+    alert("Il cognome deve contenere solo lettere.");
+    return false;
+  }
+  if (!capRegex.test(cap)) {
+    alert("Il CAP deve essere composto da 5 numeri.");
+    return false;
+  }
+  if (!cittaRegex.test(citta)) {
+    alert("La città deve contenere solo lettere e spazi.");
+    return false;
+  }
+  if (!emailRegex.test(email)) {
+    alert("L'email non è valida.");
+    return false;
+  }
+  if (!telefonoRegex.test(telefono)) {
+    alert("Il numero di telefono deve contenere solo numeri e avere una lunghezza tra 10 e 15 cifre.");
+    return false;
+  }
+
+  return true;
+}
+
+// Funzione per aggiungere una persona
+function aggiungi() {
+  let nome = document.getElementById("nome").value;
+  let cognome = document.getElementById("cognome").value;
+  let cap = document.getElementById("cap").value;
+  let citta = document.getElementById("citta").value;
+  let provincia = document.getElementById("provincia").value;
+  let nazione = document.getElementById("nazione").value;
+  let email = document.getElementById("email").value;
+  let telefono = document.getElementById("telefono").value;
+
+  if (!nome || !cognome || !cap || !email || !telefono) {
+    alert("Compila tutti i campi obbligatori.");
+    return;
+  }
+
+  if (!validaInput(nome, cognome, cap, citta, email, telefono)) {
+    return;
+  }
+
+  let persona = {
+    nome: nome,
+    cognome: cognome,
+    cap: cap,
+    citta: citta,
+    provincia: provincia,
+    nazione: nazione,
+    email: email,
+    telefono: telefono
+  };
+
+  let dati = localStorage.getItem("anagrafica");
+  let elenco;
+
+  if (dati === null) {
+    elenco = [];
+  } else {
+    elenco = JSON.parse(dati);
+  }
+
+  elenco.push(persona);
+  localStorage.setItem("anagrafica", JSON.stringify(elenco));
+
+  document.getElementById("nome").value = "";
+  document.getElementById("cognome").value = "";
+  document.getElementById("cap").value = "";
+  document.getElementById("citta").value = "";
+  document.getElementById("provincia").value = "";
+  document.getElementById("nazione").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("telefono").value = "";
+}
+
+// Funzione per stampare i dati in una tabella
+function stampa() {
+  let nome = document.getElementById("nome").value;
+  let cognome = document.getElementById("cognome").value;
+  let cap = document.getElementById("cap").value;
+  let citta = document.getElementById("citta").value;
+  let provincia = document.getElementById("provincia").value;
+  let nazione = document.getElementById("nazione").value;
+  let email = document.getElementById("email").value;
+  let telefono = document.getElementById("telefono").value;
+
+  let tabella = "<table border='1' cellpadding='3'>" +
+        "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>" +
+        "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + cap + "</td><td>" + citta + "</td><td>" + provincia + "</td><td>" + nazione + "</td><td>" + email + "</td><td>" + telefono + "</td></tr>" +
+        "</table>";
+
+  document.getElementById("stampa").innerHTML = tabella;
+}
+</script>
+</head>
+
+<body>
+<button onclick="document.location='https://moreirafabiany.github.io/HTML/?authuser=0'">Go back to menu</button>
+
+<h2>Anagrafica 4.0</h2>
+
+<input type="text" id="nome" placeholder="Nome"><br>
+<input type="text" id="cognome" placeholder="Cognome"><br>
+<input type="text" id="cap" placeholder="CAP (5 numeri)"><br>
+<input type="text" id="citta" placeholder="Città"><br>
+<input type="text" id="provincia" placeholder="Provincia"><br>
+<input type="text" id="nazione" placeholder="Nazione"><br>
+<input type="email" id="email" placeholder="Email"><br>
+<input type="text" id="telefono" placeholder="Telefono"><br>
+
+<button onclick="aggiungi()">Aggiungi</button>
+<button onclick="stampa()">Stampa</button>
+
+<div id="risultato"></div>
+<div id="stampa"></div>
+</body>
+</html>
