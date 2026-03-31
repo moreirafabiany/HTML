@@ -50,7 +50,7 @@ function validaInput(nome, cognome, cap, citta, email, telefono) {
   return true;
 }
 
-function aggiungi() {
+function salvaEStampa() {
   let nome = document.getElementById("nome").value;
   let cognome = document.getElementById("cognome").value;
   let cap = document.getElementById("cap").value;
@@ -92,6 +92,13 @@ function aggiungi() {
   elenco.push(persona);
   localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
+  let tabella = "<table border='1' cellpadding='3'>" +
+        "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>" +
+        "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + cap + "</td><td>" + citta + "</td><td>" + provincia + "</td><td>" + nazione + "</td><td>" + email + "</td><td>" + telefono + "</td></tr>" +
+        "</table>";
+
+  document.getElementById("stampa").innerHTML = tabella;
+
   document.getElementById("nome").value = "";
   document.getElementById("cognome").value = "";
   document.getElementById("cap").value = "";
@@ -100,24 +107,6 @@ function aggiungi() {
   document.getElementById("nazione").value = "";
   document.getElementById("email").value = "";
   document.getElementById("telefono").value = "";
-}
-
-function stampa() {
-  let nome = document.getElementById("nome").value;
-  let cognome = document.getElementById("cognome").value;
-  let cap = document.getElementById("cap").value;
-  let citta = document.getElementById("citta").value;
-  let provincia = document.getElementById("provincia").value;
-  let nazione = document.getElementById("nazione").value;
-  let email = document.getElementById("email").value;
-  let telefono = document.getElementById("telefono").value;
-
-  let tabella = "<table border='1' cellpadding='3'>" +
-        "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>" +
-        "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + cap + "</td><td>" + citta + "</td><td>" + provincia + "</td><td>" + nazione + "</td><td>" + email + "</td><td>" + telefono + "</td></tr>" +
-        "</table>";
-
-  document.getElementById("stampa").innerHTML = tabella;
 }
 </script>
 </head>
@@ -136,8 +125,7 @@ function stampa() {
 <input type="email" id="email" placeholder="Email"><br>
 <input type="text" id="telefono" placeholder="Telefono"><br>
 
-<button onclick="aggiungi()">Aggiungi</button>
-<button onclick="stampa()">Stampa</button>
+<button onclick="salvaEStampa()">Aggiungi e Stampa</button>
 
 <div id="risultato"></div>
 <div id="stampa"></div>
