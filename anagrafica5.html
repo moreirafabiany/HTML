@@ -15,6 +15,7 @@ th { background-color: #ddd; }
 
 <script>
 function validaInput(nome, cognome, cap, citta, email, telefono) {
+  let elenco = [];
   let nomeRegex = /^[a-zA-Z]+$/;
   let cognomeRegex = ^[\p{L}]+([ '][\p{L}]+)*$;
   let capRegex = /^\d{5}$/;
@@ -81,13 +82,9 @@ function salvaEStampa() {
   };
 
   let dati = localStorage.getItem("anagrafica");
-  let elenco;
 
-  if (dati === null) {
-    elenco = [];
-  } else {
+
     elenco = JSON.parse(dati);
-  }
 
   elenco.push(persona);
   localStorage.setItem("anagrafica", JSON.stringify(elenco));
