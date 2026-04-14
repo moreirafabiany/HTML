@@ -15,12 +15,11 @@ th { background-color: #ddd; }
 
 <script>
 function validaInput(nome, cognome, cap, citta, email, telefono) {
-   let elenco = [];
   let nomeRegex = /^[a-zA-Z]+$/;
-  let cognomeRegex = ^[\p{L}]+([ '][\p{L}]+)*$;
+  let cognomeRegex = /^[a-zA-Z]+$/;
   let capRegex = /^\d{5}$/;
   let cittaRegex = /^[a-zA-Z\s]+$/;
-  let emailRegex = /^[a-zA-Z0/^[a-zA-Z]+$/-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   let telefonoRegex = /^\d{10,15}$/;
 
   if (!nomeRegex.test(nome)) {
@@ -82,11 +81,14 @@ function salvaEStampa() {
   };
 
   let dati = localStorage.getItem("anagrafica");
-  
-if (dati === null) {
+  let elenco;
+
+  if (dati === null) {
+    elenco = [];
   } else {
     elenco = JSON.parse(dati);
-}
+  }
+
   elenco.push(persona);
   localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
