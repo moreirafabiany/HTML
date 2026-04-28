@@ -14,6 +14,7 @@ th { background-color: #ddd; }
 </style>
 
 <script>
+   let elenco;
 function validaInput(nome, cognome, cap, citta, email, telefono) {
   let nomeRegex = /^[a-zA-Z]+$/;
   let cognomeRegex =/^[a-zA-Z' ]+$/;
@@ -81,7 +82,7 @@ function salvaEStampa() {
   };
 
   let dati = localStorage.getItem("anagrafica");
-  let elenco;
+ 
 
   if (dati === null) {
     elenco = [];
@@ -92,7 +93,7 @@ function salvaEStampa() {
   elenco.push(persona);
   localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
-  let tabella = "<table border='1' cellpadding='3'>" +
+  let riga +=
         "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>" +
         "<tr><td>" + nome + "</td><td>" + cognome + "</td><td>" + cap + "</td><td>" + citta + "</td><td>" + provincia + "</td><td>" + nazione + "</td><td>" + email + "</td><td>" + telefono + "</td></tr>" +
         "</table>";
@@ -115,6 +116,7 @@ function salvaEStampa() {
 <button onclick="document.location='https://moreirafabiany.github.io/HTML/?authuser=0'">Go back to menu</button>
 
 <h2>Anagrafica 5.0</h2>
+  let tabella = "<table border='1' cellpadding='3'>";
 
 <input type="text" id="nome" placeholder="Nome"><br>
 <input type="text" id="cognome" placeholder="Cognome"><br>
