@@ -22,7 +22,7 @@
 
         function validaInput(nome, cognome, cap, citta, email, telefono) {
             let nomeRegex = /^[a-zA-Z\s]+$/;
-            let cognomeRegex = /^[a-zA-Z'\s]+$/;
+            let cognomeRegex = /^[a-zA-Z\s'-]+$/;
             let capRegex = /^\d{5}$/;
             let cittaRegex = /^[a-zA-Z\s]+$/;
             let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
