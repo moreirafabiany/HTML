@@ -5,17 +5,16 @@
     <title>Anagrafica 5.0</title>
 
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        input { margin: 5px 0; padding: 8px; width: 250px; display: block; }
-        button { padding: 10px 20px; margin-top: 10px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
-        button:hover { background-color: #0056b3; }
+        /* Stile derivato da Anagrafica 4.0 */
+        body { padding: 20px; }
+        input { margin: 5px 0; padding: 8px; width: 250px; }
+        button { padding: 10px 20px; margin-top: 10px; cursor: pointer; }
         table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        th { background-color: #f4f4f4; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #ddd; }
     </style>
 
     <script>
-
         window.onload = function() {
             stampaTabella();
         };
@@ -74,35 +73,47 @@
             elenco.push(persona);
             localStorage.setItem("anagrafica", JSON.stringify(elenco));
 
-            document.querySelectorAll("input").forEach(input => input.value = "");
+            // Reset campi
+            document.getElementById("nome").value = "";
+            document.getElementById("cognome").value = "";
+            document.getElementById("cap").value = "";
+            document.getElementById("citta").value = "";
+            document.getElementById("provincia").value = "";
+            document.getElementById("nazione").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("telefono").value = "";
 
             stampaTabella();
         }
 
         function stampaTabella() {
             let dati = localStorage.getItem("anagrafica");
-            let elenco = dati ? JSON.parse(dati) : [];
-            
-            if (elenco.length === 0) return;
+            if (!dati) return;
 
-            let htmlTabella = "<table>" +
-                "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>";
-
-            for (let i = 0; i < elenco.length; i++) {
-                htmlTabella += "<tr>" +
-                    "<td>" + elenco[i].nome + "</td>" +
-                    "<td>" + elenco[i].cognome + "</td>" +
-                    "<td>" + elenco[i].cap + "</td>" +
-                    "<td>" + elenco[i].citta + "</td>" +
-                    "<td>" + elenco[i].provincia + "</td>" +
-                    "<td>" + elenco[i].nazione + "</td>" +
-                    "<td>" + elenco[i].email + "</td>" +
-                    "<td>" + elenco[i].telefono + "</td>" +
-                "</tr>";
+            let elenco = JSON.parse(dati);
+            if (elenco.length === 0) {
+                document.getElementById("stampa").innerHTML = "";
+                return;
             }
 
-            htmlTabella += "</table>";
-            document.getElementById("stampa").innerHTML = htmlTabella;
+            let tabella = "<table>";
+            tabella += "<tr><th>Nome</th><th>Cognome</th><th>CAP</th><th>Città</th><th>Provincia</th><th>Nazione</th><th>Email</th><th>Telefono</th></tr>";
+
+            for (let i = 0; i < elenco.length; i++) {
+                tabella += "<tr>";
+                tabella += "<td>" + elenco[i].nome + "</td>";
+                tabella += "<td>" + elenco[i].cognome + "</td>";
+                tabella += "<td>" + elenco[i].cap + "</td>";
+                tabella += "<td>" + elenco[i].citta + "</td>";
+                tabella += "<td>" + elenco[i].provincia + "</td>";
+                tabella += "<td>" + elenco[i].nazione + "</td>";
+                tabella += "<td>" + elenco[i].email + "</td>";
+                tabella += "<td>" + elenco[i].telefono + "</td>";
+                tabella += "</tr>";
+            }
+
+            tabella += "</table>";
+            document.getElementById("stampa").innerHTML = tabella;
         }
 
         function resettaTutto() {
@@ -119,17 +130,17 @@
 
     <h2>Anagrafica 5.0</h2>
 
-    <input type="text" id="nome" placeholder="Nome">
-    <input type="text" id="cognome" placeholder="Cognome">
-    <input type="text" id="cap" placeholder="CAP (5 numeri)">
-    <input type="text" id="citta" placeholder="Città">
-    <input type="text" id="provincia" placeholder="Provincia">
-    <input type="text" id="nazione" placeholder="Nazione">
-    <input type="email" id="email" placeholder="Email">
-    <input type="text" id="telefono" placeholder="Telefono">
+    <input type="text" id="nome" placeholder="Nome"><br>
+    <input type="text" id="cognome" placeholder="Cognome"><br>
+    <input type="text" id="cap" placeholder="CAP (5 numeri)"><br>
+    <input type="text" id="citta" placeholder="Città"><br>
+    <input type="text" id="provincia" placeholder="Provincia"><br>
+    <input type="text" id="nazione" placeholder="Nazione"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="text" id="telefono" placeholder="Telefono"><br>
 
     <button onclick="salvaEStampa()">Aggiungi e Stampa</button>
-    <button onclick="resettaTutto()" style="background-color: #dc3545;">Svuota Anagrafica</button>
+    <button onclick="resettaTutto()">Svuota Anagrafica</button>
 
     <div id="stampa"></div>
 </body>
