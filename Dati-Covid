@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>COVID-19 Italia</title>
+  <style>
+    table { border-collapse: collapse; font-size: 12px; }
+    th, td { border: 1px solid #999; padding: 4px 6px; text-align: right; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+  <h1>Andamento nazionale COVID-19</h1>
+  <div id="tabella">Caricamento...</div>
+
+  <script>
+    var url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json";
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var dati = JSON.parse(xhr.responseText);
+        var chiavi = Object.keys(dati[0]);
+
+        var html = "<table><tr>";
+        for (var i = 0; i < chiavi.length; i++) {
+          html += "<th>" + chiavi[i] + "</th>";
+        }
+        html += "</tr>";
+
+        for (var r = 0; r < dati.length; r++) {
+          html += "<tr>";
+          for (var c = 0; c < chiavi.length; c++) {
+            var valore = dati[r][chiavi[c]];
+            html += "<td>" + (valore === null ? "" : valore) + "</td>";
+          }
+          html += "</tr>";
+        }
+
+        html += "</table>";
+        document.getElementById("tabella").innerHTML = html;
+      }
+    };
+
+    xhr.send();
+  </script>
+</body>
+</html>
